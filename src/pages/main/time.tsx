@@ -2,11 +2,12 @@ import { Stack, Select, MenuItem, Button, Container, Box } from '@mui/material';
 import Countdown, { CountdownRenderProps } from 'react-countdown';
 
 function TimeRenderer({ hours, minutes, seconds }: CountdownRenderProps) {
+  const displayHours = hours.toString().padStart(2, '0');
   const displayMinutes = minutes.toString().padStart(2, '0');
   const displaySeconds = seconds.toString().padStart(2, '0');
   return (
     <>
-      {displayMinutes}:{displaySeconds}
+      {displayHours}:{displayMinutes}:{displaySeconds}
     </>
   );
 }
@@ -25,11 +26,11 @@ function Time() {
         }}
       >
         <Container>
-          <Button variant="contained">-</Button>
+          <Button variant="contained">+</Button>
           <Box pt={3} pb={3} pl={2}>
             <Countdown date={Date.now() + 100000} renderer={TimeRenderer} />
           </Box>
-          <Button variant="contained">+</Button>
+          <Button variant="contained">-</Button>
         </Container>
       </Container>
     </>
